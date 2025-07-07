@@ -1,0 +1,15 @@
+[package]
+name = "land_registry_canister"
+version = "0.1.0"
+edition = "2021"
+description = "Virtual Land Registry canister for ICP blockchain"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid.workspace = true
+ic-cdk.workspace = true
+ic-stable-structures.workspace = true
+serde.workspace = true
+serde_json.workspace = true

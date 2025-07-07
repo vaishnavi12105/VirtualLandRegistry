@@ -1,0 +1,14 @@
+{
+  "name": "Virtual Land Registry",
+  "tagline": "Decentralized. Secure. Future-Ready.",
+  "description": "A Virtual Land Registry is a decentralized platform that allows users to register, transfer, and verify ownership of digital land or assets in virtual worlds (metaverses). It ensures that land ownership is transparent, tamper-proof, and accessible globally, without intermediaries.",
+  "team": [
+    {
+      "name": "Aditya Kumar",
+      "email": "adityadav294@gmail.com"
+    }
+  ],
+  "demo_url": "https://youtu.be/ykJR4Gtf3JM",
+  "video_url": "https://youtu.be/ykJR4Gtf3JM",
+  "technologies": ["Rust", "React", "HTML", "CSS"]
+}

@@ -1,0 +1,96 @@
+type Principal = principal;
+
+type LandStatus = variant {
+    Pending;
+    Verified;
+    Rejected;
+    ForSale;
+    Sold;
+};
+
+type LandTransfer = record {
+    from: Principal;
+    to: Principal;
+    timestamp: nat64;
+    verified_by: opt Principal;
+};
+
+type LandParcel = record {
+    id: nat64;
+    owner: Principal;
+    coordinates: text;
+    size: float64;
+    description: text;
+    status: LandStatus;
+    verified_by: opt Principal;
+    created_at: nat64;
+    updated_at: nat64;
+    history: vec LandTransfer;
+    price: opt nat64;
+    metadata: text;
+    preview_image_url: opt text;
+};
+
+type LandInput = record {
+    coordinates: text;
+    size: float64;
+    description: text;
+    metadata: text;
+    price: opt nat64;
+};
+
+type Result = variant {
+    Ok: LandParcel;
+    Err: text;
+};
+
+type StringResult = variant {
+    Ok: text;
+    Err: text;
+};
+
+type BalanceResult = variant {
+    Ok: nat64;
+    Err: text;
+};
+
+service : {
+    // Land registration and management
+    register_land: (LandInput) -> (Result);
+    get_land_details: (nat64) -> (opt LandParcel) query;
+    get_user_lands: (Principal) -> (vec LandParcel) query;
+    get_all_lands: () -> (vec LandParcel) query;
+    get_lands_for_sale: () -> (vec LandParcel) query;
+    get_pending_verification_lands: () -> (vec LandParcel) query;
+    get_lands_by_status: (LandStatus) -> (vec LandParcel) query;
+    get_total_lands: () -> (nat64) query;
+    get_land_history: (nat64) -> (opt vec LandTransfer) query;
+    
+    // Land verification
+    verify_land: (nat64) -> (Result);
+    reject_land_verification: (nat64) -> (Result);
+    
+    // Land trading
+    set_land_for_sale: (nat64, nat64) -> (Result);
+    buy_land: (nat64) -> (Result);
+    remove_land_from_sale: (nat64) -> (Result);
+    transfer_ownership: (nat64, Principal) -> (Result);
+    
+    // Verifier management
+    add_verifier: (Principal) -> (StringResult);
+    remove_verifier: (Principal) -> (StringResult);
+    is_user_verifier: (Principal) -> (bool) query;
+    
+    // Search
+    search_lands: (text) -> (vec LandParcel) query;
+    
+    // Sample data initialization
+    initialize_sample_data: () -> (text);
+    add_more_sample_lands: () -> (text);
+    clear_all_data: () -> (text);
+    
+    // Wallet management
+    get_wallet_balance: (Principal) -> (nat64) query;
+    add_funds_to_wallet: (nat64) -> (BalanceResult);
+    initialize_user_wallet: () -> (BalanceResult);
+}
