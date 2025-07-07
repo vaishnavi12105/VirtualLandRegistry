@@ -262,7 +262,39 @@ echo "Backend canisters:" > deployment-info.txt
 dfx canister id --all >> deployment-info.txt
 ```
 
+## Security Considerations
 
+### 1. Canister Security
+- Review all canister code before deployment
+- Use stable memory for persistent data
+- Implement proper access controls
+- Regular security audits
+
+### 2. Frontend Security
+- Validate all user inputs
+- Use HTTPS in production
+- Implement CSP headers
+- Regular dependency updates
+
+### 3. Operational Security
+- Secure private keys and identities
+- Monitor canister cycles
+- Regular backups
+- Access logging
+
+## Cost Optimization
+
+### 1. Cycles Management
+- Monitor cycles consumption
+- Optimize canister memory usage
+- Use efficient data structures
+- Regular cleanup of unused data
+
+### 2. Storage Optimization
+- Compress large assets
+- Use IPFS for large files
+- Implement data pagination
+- Archive old transactions
 
 ---
 
