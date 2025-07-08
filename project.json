@@ -13,7 +13,7 @@
   "video_url": "https://youtu.be/ykJR4Gtf3JM",
   "technologies": ["Rust", "React", "HTML", "CSS"]
 }
-
+{
 ## Project Overview
 This is a **Virtual Land Registry dApp** built on the Internet Computer Protocol (ICP) that enables users to:
 - Register virtual land parcels
@@ -194,3 +194,4 @@ Your demo successfully shows:
 ---
 
 *Built with: Rust, React.js, Internet Computer Protocol, Internet Identity, Stable Storage*
+}
